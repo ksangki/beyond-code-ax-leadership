@@ -12,7 +12,13 @@
 - **소개 영상**: [100초](media/opening.mp4) (내레이션 음성: Microsoft Edge 읽어 주기 ko-KR-Hyunsu)
 - **발표 영상**: [15분, 발표자료 39장 요약](media/talk.mp4) · [자막](media/talk.vtt) (내레이션 음성: Microsoft Edge 읽어 주기 ko-KR-Hyunsu)
 - **리더 시간 점검표**: [웹에서 바로 쓰기](https://ksangki.github.io/beyond-code-ax-leadership/check/) (1장 도구)
+- **AI 서평 · 비교**: [reviews/](https://ksangki.github.io/beyond-code-ax-leadership/reviews/)
 - **책 소개**: [BOOK.md](BOOK.md)
+
+## 비슷한 책들 사이에서 · AI 서평
+
+- 실무자·팀장·임원의 결정을 한 주제 안에서 장 단위로 잇고, 장마다 다음 주에 쓸 도구를 하나씩(모두 29개) 둔다. 근거와 이 책의 제안을 문장 단위로 나눠 적는다.
+- 비슷한 책 16권과의 비교, AI 두 모델(Claude·GPT)이 쓴 서평과 서로에게 단 답글: [AI 서평 · 비슷한 책들 사이에서](https://ksangki.github.io/beyond-code-ax-leadership/reviews/)
 
 ## 차례
 

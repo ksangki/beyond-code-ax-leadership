@@ -1,0 +1,14 @@
+:root{--bg:#fbf8f1;--ink:#1a2240;--muted:#5c6582;--line:#d9d3c4;--accent:#a87814;--card:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#0c1433;--ink:#f1ede2;--muted:#a9b1cc;--line:#2a3766;--accent:#e8b84c;--card:#141e45}}
+body{background:var(--bg);color:var(--ink);font-family:Pretendard,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;line-height:1.8;margin:0;padding:0 16px;word-break:keep-all}
+main,header,nav,body>*{max-width:46rem;margin-left:auto;margin-right:auto}
+h1{font-size:1.9rem;line-height:1.35;margin:2.4rem 0 1rem}
+h2{font-size:1.4rem;margin:2.6rem 0 .8rem;padding-top:1rem;border-top:2px solid var(--accent)}
+h3{font-size:1.12rem;margin:1.8rem 0 .5rem;color:var(--accent)}
+h4{font-size:1rem;margin:1.4rem 0 .4rem}
+a{color:var(--accent)} blockquote{border-left:3px solid var(--accent);margin:1rem 0;padding:.2rem 1rem;color:var(--muted)}
+table{border-collapse:collapse;width:100%;font-size:.86rem;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:.45rem .55rem;vertical-align:top}
+th{background:var(--card)} header#title-block-header{display:none}
+p,li,td,th,a,blockquote{overflow-wrap:anywhere}
+table{max-width:100%}

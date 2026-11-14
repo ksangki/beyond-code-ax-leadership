@@ -175,7 +175,7 @@ function list(){
     el.appendChild(det);
     if(open.includes(det.id)) det.open=true;
   }
-  if(location.hash){const x=document.getElementById(location.hash.slice(1)); if(x){x.open=true}}
+  if(location.hash){const x=document.getElementById(location.hash.slice(1)); if(x){x.open=true;setTimeout(()=>x.scrollIntoView(),0)}}
 }
 document.addEventListener('input',e=>{
   const a=e.target;

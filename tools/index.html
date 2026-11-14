@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>도구 29개 점검표</title>
+<meta name="description" content="「코드 너머 AX 리더십 완성」 부록 A의 도구 29개를 웹에서 채우고 진행을 점검한다. 실무자 10개, 팀장 10개, 임원 9개. 기록은 이 브라우저에만 저장된다.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="도구 29개 점검표 · 코드 너머 AX 리더십 완성">
+<meta property="og:description" content="실무자·팀장·임원의 도구 29개를 웹에서 채우고 진행을 점검한다. 기록은 브라우저에만 저장된다.">
+<meta property="og:image" content="https://ksangki.github.io/beyond-code-ax-leadership/cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+:root{--bg:#fbfaf7;--text:#1b2430;--muted:#5f6b78;--line:#e1e4e8;--accent:#9a6b1c;--panel:#f1f3f5;--field:#ffffff;--ok:#2f6b3a;--mid:#9a6b1c;--soft:#f6efe0}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#111a24;--text:#e8ecf0;--muted:#9aa6b2;--line:#2c3a4a;--accent:#e3b35a;--panel:#18232f;--field:#0d151e;--ok:#8fd19e;--mid:#e3b35a;--soft:#1f2a36}}
+:root[data-theme="dark"]{--bg:#111a24;--text:#e8ecf0;--muted:#9aa6b2;--line:#2c3a4a;--accent:#e3b35a;--panel:#18232f;--field:#0d151e;--ok:#8fd19e;--mid:#e3b35a;--soft:#1f2a36}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--text);margin:0 auto;max-width:960px;padding:24px 16px 80px;font-family:'Pretendard','Apple SD Gothic Neo','Noto Sans KR',sans-serif;font-size:16px;line-height:1.7;word-break:keep-all;overflow-wrap:anywhere}
+a{color:var(--accent)}
+.top{font-size:.9rem;color:var(--muted)} .top a{text-decoration:none}
+h1{font-size:1.8rem;margin:.6rem 0 .2rem;line-height:1.35}
+h2{font-size:1.2rem;margin:2.2rem 0 .6rem;padding-bottom:.3rem;border-bottom:2px solid var(--accent)}
+.lead{color:var(--muted);margin:.2rem 0 1rem}
+.note{background:var(--panel);border-left:4px solid var(--accent);padding:.7rem 1rem;border-radius:0 8px 8px 0;font-size:.93rem;margin:1rem 0}
+.note ul{margin:.2rem 0;padding-left:1.2rem}
+input,select,textarea,button{font:inherit;color:var(--text)}
+select,textarea,input[type=text],input[type=date]{background:var(--field);border:1px solid var(--line);border-radius:8px;padding:.3rem .55rem}
+button{background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:.32rem .9rem;cursor:pointer}
+button.pri{border-color:var(--accent);color:var(--accent);font-weight:700}
+button.danger{color:#a5481c}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:1rem 0}
+.tabs button[aria-pressed=true]{border-color:var(--accent);color:var(--accent);font-weight:700;background:var(--soft)}
+.prog{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:.6rem 0 1.2rem}
+.prog div{border:1px solid var(--line);border-radius:10px;padding:.6rem .8rem;background:var(--panel)}
+.prog b{display:block;font-size:.9rem} .prog span{font-size:.82rem;color:var(--muted)}
+.track{height:8px;background:var(--bg);border:1px solid var(--line);border-radius:999px;overflow:hidden;margin:.35rem 0}
+.track i{display:block;height:100%;background:var(--accent)}
+details.tool{border:1px solid var(--line);border-radius:12px;margin:.6rem 0;background:var(--bg)}
+details.tool[open]{border-color:var(--accent)}
+details.tool>summary{list-style:none;cursor:pointer;padding:.7rem .9rem;display:grid;grid-template-columns:1fr auto;gap:.2rem 12px;align-items:center}
+details.tool>summary::-webkit-details-marker{display:none}
+.t-name{font-weight:700} .t-meta{font-size:.82rem;color:var(--muted)} .t-use{grid-column:1/-1;font-size:.88rem;color:var(--muted)}
+.badge{font-size:.78rem;border-radius:999px;padding:.1rem .6rem;border:1px solid var(--line);white-space:nowrap}
+.badge.s1{border-color:var(--mid);color:var(--mid)} .badge.s2{border-color:var(--ok);color:var(--ok);font-weight:700}
+.body{padding:0 .9rem .9rem}
+.bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:.4rem 0 .8rem;font-size:.9rem}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:10px;margin:.4rem 0 .3rem}
+table{border-collapse:collapse;width:100%;font-size:.88rem;line-height:1.5}
+th,td{border-bottom:1px solid var(--line);padding:.4rem .45rem;text-align:left;vertical-align:top}
+th{background:var(--panel);font-weight:700;min-width:7em}
+tr:last-child td{border-bottom:0}
+td.fix{color:var(--text);min-width:8em} tr.ex td{color:var(--muted);font-style:italic;background:var(--soft)}
+td textarea{width:100%;min-width:8em;min-height:2.3em;resize:vertical;font-size:.88rem;padding:.25rem .4rem}
+.cap{font-size:.85rem;color:var(--accent);font-weight:700;margin-top:1rem}
+.src{font-size:.8rem;color:var(--muted);margin:.6rem 0}
+ul.ck{list-style:none;padding:0;margin:.4rem 0;display:grid;gap:6px}
+ul.ck label{display:flex;gap:8px;align-items:flex-start}
+ul.ck input{margin-top:.4rem;flex:none}
+.memo{display:grid;grid-template-columns:1fr auto;gap:10px;margin-top:.8rem}
+.memo textarea{min-height:3.4em;width:100%}
+.ctl{display:flex;flex-wrap:wrap;gap:8px;margin:.6rem 0}
+.status{font-size:.85rem;color:var(--muted);min-height:1.3em}
+footer{margin-top:3rem;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padding-top:1rem}
+@media (max-width:620px){.prog{grid-template-columns:1fr} h1{font-size:1.5rem} .memo{grid-template-columns:1fr}}
+@media print{
+  body{max-width:none;padding:0;font-size:11px;background:#fff;color:#000}
+  .noprint,button,.tabs,.top,.prog{display:none!important}
+  details.tool:not([open]){display:none} details.tool{border:0} summary{padding:0!important}
+  td textarea{border:0;resize:none} .tbl{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<p class="top noprint"><a href="../">← 「코드 너머 AX 리더십 완성」 웹에서 읽기</a> · <a href="../check/">리더 시간 점검표(1장)</a></p>
+<h1>도구 29개 점검표</h1>
+<p class="lead">「코드 너머 AX 리더십 완성」 부록 A의 도구 29개를 웹에서 채운다. 실무자 10개, 팀장 10개, 임원 9개.</p>
+<div class="note">
+<ul>
+<li>도구마다 진행 상태(아직, 시작함, 쓰는 중)를 고르면 위의 막대가 자리별로 채워진다.</li>
+<li>도구를 열면 부록의 양식이 그대로 나온다. 빈 칸에 적고, 회색 기울임 줄은 책의 예시다. 칸이 모두 채워진 표(질문지, 기준표, 문구 견본)에는 맨 오른쪽에 「우리 팀 기록」 칸을 붙였다. 표마다 줄을 더할 수 있다.</li>
+<li>기록은 이 브라우저에만 저장된다. 서버로 보내지 않는다. 다른 기기에서 이어 쓰려면 아래에서 백업 파일(JSON)을 내려받아 불러오자.</li>
+<li>개인 정보나 회사 기밀은 적지 말고, 팀 코드처럼 바꿔 적는다(책의 양식이 권하는 방식이다).</li>
+</ul>
+</div>
+
+<div class="prog" id="prog" aria-live="polite"></div>
+<div class="tabs noprint" role="group" aria-label="자리별 보기">
+<button type="button" data-r="" aria-pressed="true">전체 29</button>
+<button type="button" data-r="실무자" aria-pressed="false">실무자 10</button>
+<button type="button" data-r="팀장" aria-pressed="false">팀장 10</button>
+<button type="button" data-r="임원" aria-pressed="false">임원 9</button>
+</div>
+
+<div id="list"></div>
+
+<h2 class="noprint">백업과 내보내기</h2>
+<div class="ctl noprint">
+<button type="button" class="pri" id="csv">모든 기록을 CSV로 내려받기</button>
+<button type="button" id="bak">백업(JSON) 내려받기</button>
+<label><button type="button" id="loadbtn">백업 불러오기</button><input type="file" id="load" accept="application/json" hidden></label>
+<button type="button" onclick="window.print()">연 도구 인쇄</button>
+<button type="button" class="danger" id="wipe">모든 기록 지우기</button>
+</div>
+<p class="status noprint" id="status"></p>
+
+<footer>
+「코드 너머 AX 리더십 완성」 부록 A 「자리별 도구 모음」을 웹으로 옮긴 것입니다. 양식과 예시는 책 그대로이고, 도구의 근거와 근거 수준도 책의 표기를 따릅니다. 김상기 · CC BY-NC-SA 4.0 · <a href="../">책 읽기</a>
+</footer>
+
+<script src="tools.js"></script>
+<script>
+(function(){
+const KEY='axlc-tools-v1', T=window.TOOLS||[], CH=window.CHAPTERS||{};
+const ST=['아직','시작함','쓰는 중'];
+let store={status:{},data:{}}, saveOk=true, filter='';
+try{const raw=localStorage.getItem(KEY); if(raw) store=Object.assign(store,JSON.parse(raw));}catch(e){saveOk=false}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(store));saveOk=true}catch(e){saveOk=false} status()}
+function status(msg){document.getElementById('status').textContent=msg||(saveOk?'이 브라우저에 저장됨':'이 브라우저에서는 저장할 수 없다(사생활 보호 창 등). 닫기 전에 백업을 내려받자.')}
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const isEx=r=>/^\s*(<[^>]+>)?\s*예[:：]/.test(r[0]||'');
+function D(id){return store.data[id]||(store.data[id]={tables:{},checks:{},memo:'',next:''})}
+function prog(){
+  const el=document.getElementById('prog'); el.innerHTML='';
+  for(const r of ['실무자','팀장','임원']){
+    const ts=T.filter(t=>t.role===r), n=ts.length, s1=ts.filter(t=>(store.status[t.id]|0)===1).length, s2=ts.filter(t=>(store.status[t.id]|0)===2).length;
+    const d=document.createElement('div');
+    d.innerHTML=`<b>${r} 도구 ${n}개</b><div class="track" aria-hidden="true"><i style="width:${n?Math.round((s1*.5+s2)/n*100):0}%"></i></div><span>쓰는 중 ${s2} · 시작함 ${s1} · 아직 ${n-s1-s2}</span>`;
+    el.appendChild(d);
+  }
+}
+function cellHTML(t,bi,ri,ci,val,fixed){
+  if(fixed) return `<td class="fix">${val}</td>`;
+  return `<td><textarea data-t="${t.id}" data-b="${bi}" data-r="${ri}" data-c="${ci}" aria-label="칸">${esc(val||'')}</textarea></td>`;
+}
+// 칸이 모두 채워진 표(질문지·기준표·문구 견본)에는 적을 칸 하나를 덧붙인다
+const OWN='우리 팀 기록';
+function colsOf(b){const open=b.rows.some(r=>!isEx(r)&&(r.every(c=>!c)||b.cols.some((_,ci)=>(r[ci]||'')==='')));return open?b.cols:[...b.cols,OWN]}
+function tableHTML(t,b,bi){
+  const d=D(t.id), saved=d.tables[bi]||(d.tables[bi]={rows:{},extra:0});
+  const cols=colsOf(b), own=cols.length>b.cols.length;
+  let h=(b.cap?`<p class="cap">${esc(b.cap)}</p>`:'')+'<div class="tbl"><table><thead><tr>'+cols.map(c=>`<th>${c}</th>`).join('')+'</tr></thead><tbody>';
+  let ri=0;
+  for(const r of b.rows){
+    if(isEx(r)){h+='<tr class="ex">'+cols.map((_,ci)=>`<td>${r[ci]||''}</td>`).join('')+'</tr>';continue}
+    const allBlank=r.every(c=>!c);
+    h+='<tr>'+cols.map((_,ci)=>{const v=r[ci]||''; const fixed=ci<b.cols.length&&!allBlank&&v!==''; return cellHTML(t,bi,'r'+ri,ci,fixed?v:((saved.rows['r'+ri]||{})[ci]||''),fixed)}).join('')+'</tr>'; ri++;
+  }
+  for(let k=0;k<(saved.extra||0);k++){h+='<tr>'+cols.map((_,ci)=>cellHTML(t,bi,'x'+k,ci,(saved.rows['x'+k]||{})[ci]||'',false)).join('')+'</tr>'}
+  h+=`</tbody></table></div><button type="button" class="noprint" data-add="${t.id}|${bi}">줄 더하기</button>`;
+  return h;
+}
+function toolHTML(t){
+  const d=D(t.id); let h='';
+  const c=CH[t.ch];
+  h+=`<div class="bar"><label>진행 <select data-st="${t.id}">${ST.map((s,i)=>`<option value="${i}"${(store.status[t.id]|0)===i?' selected':''}>${s}</option>`).join('')}</select></label>`+(c?`<a href="${c.href}">${t.ch}장 「${esc(c.title)}」 읽기</a>`:'')+(t.ch===1?' · <a href="../check/">합계와 비율을 계산해 주는 웹 점검표</a>':'')+'</div>';
+  t.blocks.forEach((b,bi)=>{
+    if(b.t==='p') h+=`<p>${b.h}</p>`;
+    else if(b.t==='src') h+=`<p class="src">${b.h}</p>`;
+    else if(b.t==='list') h+='<ul class="ck">'+b.items.map((it,ii)=>`<li><label><input type="checkbox" data-ck="${t.id}|${bi}|${ii}"${d.checks[bi+'|'+ii]?' checked':''}><span>${it}</span></label></li>`).join('')+'</ul>';
+    else if(b.t==='table') h+=tableHTML(t,b,bi);
+  });
+  h+=`<div class="memo"><label>메모<br><textarea data-memo="${t.id}" aria-label="메모">${esc(d.memo||'')}</textarea></label><label>다시 볼 날<br><input type="date" data-next="${t.id}" value="${esc(d.next||'')}"></label></div>`;
+  return h;
+}
+function list(){
+  const el=document.getElementById('list'), open=[...el.querySelectorAll('details[open]')].map(x=>x.id);
+  el.innerHTML='';
+  for(const t of T){
+    if(filter&&t.role!==filter) continue;
+    const s=store.status[t.id]|0, det=document.createElement('details'); det.className='tool'; det.id='t-'+t.id;
+    det.innerHTML=`<summary><span><span class="t-meta">${t.ch}장 · ${esc(t.role)}${t.k?' · 도구 '+t.k:''}</span><br><span class="t-name">${esc(t.name)}</span></span><span class="badge s${s}">${ST[s]}</span><span class="t-use">${esc(t.use)}</span></summary><div class="body"></div>`;
+    det.addEventListener('toggle',()=>{if(det.open&&!det.dataset.r){det.querySelector('.body').innerHTML=toolHTML(t);det.dataset.r=1}});
+    el.appendChild(det);
+    if(open.includes(det.id)) det.open=true;
+  }
+  if(location.hash){const x=document.getElementById(location.hash.slice(1)); if(x){x.open=true}}
+}
+document.addEventListener('input',e=>{
+  const a=e.target;
+  if(a.dataset.t){const d=D(a.dataset.t),tb=d.tables[a.dataset.b]||(d.tables[a.dataset.b]={rows:{},extra:0}); (tb.rows[a.dataset.r]||(tb.rows[a.dataset.r]={}))[a.dataset.c]=a.value; save()}
+  else if(a.dataset.memo){D(a.dataset.memo).memo=a.value; save()}
+  else if(a.dataset.next){D(a.dataset.next).next=a.value; save()}
+});
+document.addEventListener('change',e=>{
+  const a=e.target;
+  if(a.dataset.st){store.status[a.dataset.st]=+a.value; save(); prog(); const b=a.closest('details').querySelector('.badge'); b.className='badge s'+a.value; b.textContent=ST[+a.value]}
+  else if(a.dataset.ck){const [id,bi,ii]=a.dataset.ck.split('|'); D(id).checks[bi+'|'+ii]=a.checked; save()}
+});
+document.addEventListener('click',e=>{
+  const a=e.target.closest('button'); if(!a) return;
+  if(a.dataset.add){const [id,bi]=a.dataset.add.split('|'); const d=D(id),tb=d.tables[bi]||(d.tables[bi]={rows:{},extra:0}); tb.extra=(tb.extra||0)+1; save(); const det=document.getElementById('t-'+id); det.querySelector('.body').innerHTML=toolHTML(T.find(t=>t.id===id))}
+  if(a.dataset.r!==undefined&&a.closest('.tabs')){filter=a.dataset.r; document.querySelectorAll('.tabs button').forEach(b=>b.setAttribute('aria-pressed',b===a?'true':'false')); list()}
+});
+function dl(name,text,type){const u=URL.createObjectURL(new Blob([text],{type})),x=document.createElement('a');x.href=u;x.download=name;document.body.appendChild(x);x.click();x.remove();setTimeout(()=>URL.revokeObjectURL(u),1000)}
+const strip=s=>String(s||'').replace(/<[^>]+>/g,'');
+document.getElementById('csv').onclick=()=>{
+  const q=v=>'"'+strip(v).replace(/"/g,'""')+'"', out=[['장','자리','도구','진행','표','줄','칸','내용'].map(q).join(',')];
+  for(const t of T){const d=store.data[t.id]; out.push([t.ch,t.role,t.name,ST[store.status[t.id]|0],'','','진행',''].map(q).join(','));
+    if(!d) continue;
+    t.blocks.forEach((b,bi)=>{if(b.t!=='table')return; const tb=d.tables[bi]; if(!tb)return;
+      for(const [rk,row] of Object.entries(tb.rows)) for(const [ci,v] of Object.entries(row)) if(v) out.push([t.ch,t.role,t.name,'',b.cap,rk,colsOf(b)[ci],v].map(q).join(','))});
+    if(d.memo) out.push([t.ch,t.role,t.name,'','','','메모',d.memo].map(q).join(','));
+    if(d.next) out.push([t.ch,t.role,t.name,'','','','다시 볼 날',d.next].map(q).join(','));}
+  dl('도구-29개-점검표.csv','﻿'+out.join('\n'),'text/csv');
+};
+document.getElementById('bak').onclick=()=>dl('도구-29개-점검표-백업.json',JSON.stringify(store,null,1),'application/json');
+document.getElementById('loadbtn').onclick=()=>document.getElementById('load').click();
+document.getElementById('load').onchange=e=>{const f=e.target.files[0]; if(!f)return; f.text().then(x=>{try{const v=JSON.parse(x); if(!v.status||!v.data) throw 0; store=v; save(); prog(); list(); status('백업을 불러왔다')}catch(_){status('백업 파일을 읽지 못했다')}})};
+document.getElementById('wipe').onclick=()=>{if(confirm('이 브라우저에 저장된 도구 29개의 기록과 진행 상태를 모두 지울까요?')){store={status:{},data:{}}; save(); prog(); list()}};
+prog(); list(); status();
+})();
+</script>
+</body>
+</html>

@@ -12,6 +12,7 @@
 - **소개 영상**: [100초](media/opening.mp4) (내레이션 음성: Microsoft Edge 읽어 주기 ko-KR-Hyunsu)
 - **발표 영상**: [15분, 발표자료 39장 요약](media/talk.mp4) · [자막](media/talk.vtt) (내레이션 음성: Microsoft Edge 읽어 주기 ko-KR-Hyunsu)
 - **리더 시간 점검표**: [웹에서 바로 쓰기](https://ksangki.github.io/beyond-code-ax-leadership/check/) (1장 도구)
+- **도구 29개 점검표**: [웹에서 채우기](https://ksangki.github.io/beyond-code-ax-leadership/tools/) (부록 A의 자리별 도구 모음, 기록은 브라우저에만 저장)
 - **AI 서평 · 비교**: [reviews/](https://ksangki.github.io/beyond-code-ax-leadership/reviews/)
 - **책 소개**: [BOOK.md](BOOK.md)
 

@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>리더 시간 점검표</title>
+<meta name="description" content="「코드 너머 AX 리더십 완성」 1장 도구. 한 주 동안 30분 단위로 시간을 다섯 범주에 적고, 범주별 비율을 기준선과 나란히 본다. 기록은 이 브라우저에만 저장된다.">
+<style>
+:root{--bg:#fbfaf7;--text:#1b2430;--muted:#5f6b78;--line:#e1e4e8;--accent:#9a6b1c;--panel:#f1f3f5;--field:#ffffff;--warn:#a5481c;--ok:#2f6b3a;--bar:#c9a25a;--base:#1b2430}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#111a24;--text:#e8ecf0;--muted:#9aa6b2;--line:#2c3a4a;--accent:#e3b35a;--panel:#18232f;--field:#0d151e;--warn:#f0a070;--ok:#8fd19e;--bar:#b98d3e;--base:#e8ecf0}}
+:root[data-theme="dark"]{--bg:#111a24;--text:#e8ecf0;--muted:#9aa6b2;--line:#2c3a4a;--accent:#e3b35a;--panel:#18232f;--field:#0d151e;--warn:#f0a070;--ok:#8fd19e;--bar:#b98d3e;--base:#e8ecf0}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--text);margin:0 auto;max-width:900px;padding:24px 16px 80px;font-family:'Pretendard','Apple SD Gothic Neo','Noto Sans KR',sans-serif;font-size:16px;line-height:1.75;word-break:keep-all;overflow-wrap:anywhere}
+a{color:var(--accent)}
+.top{font-size:.9rem;color:var(--muted)} .top a{text-decoration:none}
+h1{font-size:1.8rem;margin:.6rem 0 .2rem;line-height:1.35}
+h2{font-size:1.25rem;margin:2.6rem 0 .6rem;padding-bottom:.3rem;border-bottom:2px solid var(--accent)}
+.lead{color:var(--muted);margin:.2rem 0 1rem}
+.note{background:var(--panel);border-left:4px solid var(--accent);padding:.7rem 1rem;border-radius:0 8px 8px 0;font-size:.93rem;margin:1rem 0}
+.note ul{margin:.2rem 0;padding-left:1.2rem}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:.8rem 0}
+label.inl{display:flex;gap:8px;align-items:center;font-weight:600}
+input,select,textarea,button{font:inherit;color:var(--text)}
+input[type=date],select,textarea,input[type=text]{background:var(--field);border:1px solid var(--line);border-radius:8px;padding:.35rem .6rem}
+button{background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:.35rem .95rem;cursor:pointer}
+button.pri{border-color:var(--accent);color:var(--accent);font-weight:700}
+button.danger{color:var(--warn)}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:10px;margin:.8rem 0}
+table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.5}
+th,td{border-bottom:1px solid var(--line);padding:.5rem .55rem;text-align:left;vertical-align:middle}
+th{background:var(--panel);font-weight:700;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+#grid td.cat,#grid th:first-child,#grid tfoot td:first-child{position:sticky;left:0;z-index:1;background:var(--bg);box-shadow:1px 0 0 var(--line)}
+#grid th:first-child,#grid tfoot td:first-child{background:var(--panel)}
+#hist td:first-child{white-space:nowrap}
+td.cat{min-width:8.5em} td.cat b{display:block} td.cat small{color:var(--muted);display:block;line-height:1.4}
+td.num,th.num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+input.h{width:4.2em;background:var(--field);border:1px solid var(--line);border-radius:6px;padding:.3rem .35rem;text-align:right;font-variant-numeric:tabular-nums}
+tfoot td{font-weight:700;background:var(--panel)}
+.bars{display:grid;gap:14px;margin:1rem 0}
+.bar .lbl{display:flex;justify-content:space-between;gap:8px;font-size:.93rem}
+.bar .lbl span:last-child{color:var(--muted);white-space:nowrap}
+.track{position:relative;height:14px;background:var(--panel);border:1px solid var(--line);border-radius:999px;overflow:visible;margin-top:4px}
+.fill{position:absolute;left:0;top:0;bottom:0;background:var(--bar);border-radius:999px}
+.mark{position:absolute;top:-5px;bottom:-5px;width:2px;background:var(--base)}
+.checks{list-style:none;padding:0;margin:.6rem 0;display:grid;gap:8px}
+.checks li{border:1px solid var(--line);border-radius:10px;padding:.6rem .9rem;background:var(--panel)}
+.checks li b{margin-right:.4rem}
+.yes{color:var(--warn)} .no{color:var(--ok)} .na{color:var(--muted)}
+.src{font-size:.82rem;color:var(--muted)}
+.q{border:1px solid var(--line);border-radius:10px;padding:.7rem .9rem;margin:.6rem 0}
+.q label{display:flex;gap:10px;align-items:flex-start;font-weight:600}
+.q input[type=checkbox]{margin-top:.45rem;width:1.05rem;height:1.05rem;flex:none}
+.q small{display:block;color:var(--muted);font-weight:400}
+.q textarea{width:100%;margin-top:.5rem;min-height:3.2em}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:.5rem}
+.grid2 input{width:100%}
+@media (max-width:560px){.grid2{grid-template-columns:1fr} h1{font-size:1.5rem}}
+footer{margin-top:3rem;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padding-top:1rem}
+.status{font-size:.85rem;color:var(--muted);min-height:1.3em}
+@media print{
+  body{max-width:none;padding:0;font-size:12px;background:#fff;color:#000}
+  .noprint,button,.top{display:none!important}
+  input.h{border:0;width:3em}
+  h2{break-after:avoid} .tbl,.bars,.checks{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<p class="top noprint"><a href="../">← 「코드 너머 AX 리더십 완성」 웹에서 읽기</a></p>
+<h1>리더 시간 점검표</h1>
+<p class="lead">「코드 너머 AX 리더십 완성」 1장 도구 · 팀장판, 1주 기록 (표 1-2)</p>
+
+<div class="note">
+<ul>
+<li>한 주 동안 30분 단위로 시간을 다섯 범주에 적습니다. 0.5가 30분입니다. 버거우면 첫 주는 1시간 단위로 적어도 됩니다.</li>
+<li>하루가 끝날 때 몰아 적으면 기억이 흐려지니, 오전과 오후에 한 번씩 적습니다.</li>
+<li>범주가 겹치면 그 시간에 무엇을 얻으려 했는지를 기준으로 하나만 고릅니다. 팀원이 다음에 혼자 고칠 수 있게 되는 것이 목적이었다면 사람 육성입니다.</li>
+<li>기록은 이 브라우저에만 저장됩니다. 서버로 보내지 않습니다. 다른 기기에서 이어 쓰려면 CSV로 내려받아 두세요.</li>
+</ul>
+</div>
+
+<h2>1. 이번 주 기록</h2>
+<div class="row noprint">
+  <label class="inl">기록하는 주 (월요일) <input type="date" id="week"></label>
+  <button type="button" id="thisWeek">이번 주</button>
+</div>
+<div class="tbl"><table id="grid">
+  <thead><tr><th>범주</th><th class="num">월</th><th class="num">화</th><th class="num">수</th><th class="num">목</th><th class="num">금</th><th class="num">합계(시간)</th><th class="num">비율</th></tr></thead>
+  <tbody></tbody>
+  <tfoot><tr><td>합계</td><td class="num" data-d="0"></td><td class="num" data-d="1"></td><td class="num" data-d="2"></td><td class="num" data-d="3"></td><td class="num" data-d="4"></td><td class="num" id="sumAll"></td><td class="num">100%</td></tr></tfoot>
+</table></div>
+<p class="status" id="status" role="status" aria-live="polite"></p>
+
+<h2>2. 기준선과 나란히 보기</h2>
+<p>기준선은 전 세계 조직 조사의 평균이니 맞히려고 할 필요는 없습니다. 내 시간이 어느 쪽으로 기울었는지 보는 거울로 씁니다. 세로선이 기준선입니다.</p>
+<div class="bars" id="bars"></div>
+<p class="src">기준선: Deloitte 2025 Global Human Capital Trends 보도자료(관리자 시간 중 당면 문제·행정 약 40%, 사람 육성 13%). 나머지 세 범주는 기준선이 없습니다.</p>
+
+<h3>표를 다 채운 뒤 확인할 세 가지</h3>
+<ul class="checks" id="checks"></ul>
+
+<h2>3. 지난 기록과 비교</h2>
+<p>4주마다 한 번씩 다시 기록하면 육성과 일 재설계에 쓴 시간이 늘었는지 볼 수 있습니다. 저장된 주마다 범주별 비율을 보여 줍니다.</p>
+<div class="tbl"><table id="hist">
+  <thead></thead><tbody></tbody>
+</table></div>
+<div class="row noprint">
+  <button type="button" class="pri" id="csv">CSV 내려받기</button>
+  <button type="button" id="print">인쇄</button>
+  <button type="button" class="danger" id="delWeek">이 주 기록 지우기</button>
+  <button type="button" class="danger" id="delAll">모든 기록 지우기</button>
+</div>
+
+<h2>4. 임원판: 관리 층을 줄이기 전에 물을 질문 다섯</h2>
+<p>관리 층을 줄이는 결정을 앞둔 임원이 결정 전에 물을 질문입니다. 답을 적고, 답이 정해진 질문에 표시합니다. 이 내용도 이 브라우저에만 저장됩니다.</p>
+<div id="exec"></div>
+<p class="src">임원 회의에서 다룰 때는 그 층에서 일하는 사람의 이야기를 먼저 듣는 편이 낫습니다(1장).</p>
+
+<footer>
+「코드 너머 AX 리더십 완성」 1장 「다음 주에 쓸 도구: 리더 시간 점검표」를 웹으로 옮긴 것입니다. 김상기 · CC BY-NC-SA 4.0 · <a href="../">책 읽기</a>
+</footer>
+
+<script>
+(function(){
+const CATS=[
+ {k:'admin',n:'행정·당면 문제',d:'결재, 일정 조율, 보고 취합, 급한 민원',base:40,baseTxt:'약 40%'},
+ {k:'grow',n:'사람 육성',d:'1on1, 피드백, 함께 일하며 가르치기',base:13,baseTxt:'13%'},
+ {k:'redesign',n:'일 재설계',d:'업무 흐름을 바꾸거나 없애는 논의·실험',base:null},
+ {k:'review',n:'확인·검토',d:'팀원·AI 산출물을 보고 고치거나 돌려보내기',base:null},
+ {k:'ai',n:'직접 AI 사용',d:'리더 자신이 AI에 일을 맡기고 결과를 본 시간',base:null}
+];
+const QS=[
+ ['예외 처리와 품질 확인은 누가 받나?','줄이는 층이 하던 예외 판단을 이어받을 사람과 경로가 정해져 있나? (Xu 외의 병목 경고)'],
+ ['줄인 뒤 관리자 한 사람의 팀은 몇 명이 되나?','평균만 보지 말고 가장 커지는 팀의 인원을 보자. (Gallup 평균 12.1명과 중앙값 5~6명)'],
+ ['사람을 기르는 13%의 시간은 어디서 나오나?','맡는 인원이 늘어난 관리자에게 육성 시간이 줄지 않는다는 근거가 있나? (Deloitte)'],
+ ['줄인 층이 하던 확인은 어디로 가나?','확인하는 일이 몇 사람에게 쏠리지 않는지 볼 장치가 있나? (13장)'],
+ ['1년 뒤 무엇으로 이 결정을 다시 보나?','다시 볼 날짜와 지표를 지금 적어 두었나?']
+];
+const KEY='leader-timecheck-v1';
+let store=load();
+function load(){try{const v=JSON.parse(localStorage.getItem(KEY)||'null');if(v&&v.weeks)return v}catch(e){}return {weeks:{},exec:{done:[],notes:[],date:'',metric:''}}}
+let saveOk=true;
+function save(){try{localStorage.setItem(KEY,JSON.stringify(store));saveOk=true}catch(e){saveOk=false}status()}
+const $=id=>document.getElementById(id);
+const fmt=x=>(Math.round(x*10)/10).toString();
+function monday(d){const x=new Date(d.getFullYear(),d.getMonth(),d.getDate());const w=(x.getDay()+6)%7;x.setDate(x.getDate()-w);return iso(x)}
+function iso(x){return x.getFullYear()+'-'+String(x.getMonth()+1).padStart(2,'0')+'-'+String(x.getDate()).padStart(2,'0')}
+let cur=monday(new Date());
+function wk(){return store.weeks[cur]||null}
+function ensure(){if(!store.weeks[cur]){store.weeks[cur]={};CATS.forEach(c=>store.weeks[cur][c.k]=[0,0,0,0,0])}return store.weeks[cur]}
+function totals(w){const t={};let all=0;CATS.forEach(c=>{const s=(w&&w[c.k]||[]).reduce((a,b)=>a+(+b||0),0);t[c.k]=s;all+=s});t.all=all;return t}
+
+// grid
+const tb=$('grid').querySelector('tbody');
+CATS.forEach(c=>{
+  const tr=document.createElement('tr');
+  let h=`<td class="cat"><b>${c.n}</b><small>${c.d}</small></td>`;
+  for(let d=0;d<5;d++)h+=`<td class="num"><input class="h" type="number" inputmode="decimal" min="0" max="24" step="0.5" data-k="${c.k}" data-d="${d}" aria-label="${c.n} ${'월화수목금'[d]}요일 시간"></td>`;
+  h+=`<td class="num" data-t="${c.k}"></td><td class="num" data-r="${c.k}"></td>`;
+  tr.innerHTML=h;tb.appendChild(tr);
+});
+tb.addEventListener('input',e=>{
+  const i=e.target;if(!i.classList.contains('h'))return;
+  let v=parseFloat(i.value);if(!(v>=0))v=0;if(v>24)v=24;
+  ensure()[i.dataset.k][+i.dataset.d]=v;save();render(false);
+});
+function fill(){
+  const w=wk();
+  tb.querySelectorAll('input.h').forEach(i=>{const v=w?w[i.dataset.k][+i.dataset.d]:0;i.value=v?v:''});
+}
+function render(refill){
+  if(refill)fill();
+  const w=wk(),t=totals(w);
+  CATS.forEach(c=>{
+    tb.querySelector(`[data-t="${c.k}"]`).textContent=fmt(t[c.k]);
+    tb.querySelector(`[data-r="${c.k}"]`).textContent=t.all?Math.round(t[c.k]/t.all*100)+'%':'–';
+  });
+  for(let d=0;d<5;d++){let s=0;CATS.forEach(c=>s+=w?(+w[c.k][d]||0):0);$('grid').querySelector(`tfoot [data-d="${d}"]`).textContent=fmt(s)}
+  $('sumAll').textContent=fmt(t.all);
+  // bars
+  $('bars').innerHTML=CATS.map(c=>{
+    const r=t.all?t[c.k]/t.all*100:0;
+    const mark=c.base!=null?`<span class="mark" style="left:${c.base}%" title="기준선 ${c.baseTxt}"></span>`:'';
+    return `<div class="bar"><div class="lbl"><span><b>${c.n}</b> ${t.all?Math.round(r)+'%':'–'}</span><span>기준선 ${c.base!=null?c.baseTxt:'없음'}</span></div><div class="track" role="img" aria-label="${c.n} ${Math.round(r)}%, 기준선 ${c.base!=null?c.baseTxt:'없음'}"><span class="fill" style="width:${Math.min(100,r)}%"></span>${mark}</div></div>`;
+  }).join('');
+  // checks
+  const has=t.all>0, gr=has?t.grow/t.all*100:0;
+  const item=(q,yes,yesTxt,noTxt)=>`<li><b>${q}</b> ${!has?'<span class="na">기록을 채우면 보입니다.</span>':yes?`<span class="yes">예.</span> ${yesTxt}`:`<span class="no">아니오.</span> ${noTxt}`}</li>`;
+  $('checks').innerHTML=
+    item('사람 육성이 13%보다 적은가?',gr<13,`이번 주 ${fmt(gr)}%입니다. 다음 기록에서 육성 시간이 늘었는지 보세요.`,`이번 주 ${fmt(gr)}%입니다.`)+
+    item('일 재설계에 쓴 시간이 0인가?',t.redesign===0,'업무 흐름을 바꾸거나 없애는 논의에 쓴 시간이 없었습니다.',`${fmt(t.redesign)}시간을 썼습니다.`)+
+    item('직접 AI 사용에 쓴 시간이 0인가?',t.ai===0,'7장의 2주 직접 사용 일지로 넘어갈 이유가 생겼습니다. 이 표는 그 일지의 "맡기기 전 예상" 열과 이어집니다.',`${fmt(t.ai)}시간을 썼습니다. 무엇을 맡겼고 어디서 경계를 느꼈는지 7장 일지에 이어서 적어 보세요.`);
+  hist();
+}
+function hist(){
+  const ks=Object.keys(store.weeks).filter(k=>totals(store.weeks[k]).all>0).sort().reverse();
+  const th=$('hist').querySelector('thead'),bd=$('hist').querySelector('tbody');
+  th.innerHTML=`<tr><th>주 (월요일)</th>${CATS.map(c=>`<th class="num">${c.n}</th>`).join('')}<th class="num">합계(시간)</th></tr>`;
+  if(!ks.length){bd.innerHTML=`<tr><td colspan="${CATS.length+2}" class="na">아직 저장된 기록이 없습니다.</td></tr>`;return}
+  bd.innerHTML=ks.map((k,i)=>{
+    const t=totals(store.weeks[k]),p=ks[i+1]?totals(store.weeks[ks[i+1]]):null;
+    return `<tr${k===cur?' style="font-weight:700"':''}><td>${k}</td>${CATS.map(c=>{
+      const r=Math.round(t[c.k]/t.all*100);let d='';
+      if(p){const pr=Math.round(p[c.k]/p.all*100),df=r-pr;d=` <small class="na">(${df>0?'+':''}${df})</small>`}
+      return `<td class="num">${r}%${d}</td>`}).join('')}<td class="num">${fmt(t.all)}</td></tr>`;
+  }).join('');
+}
+function status(){$('status').textContent=saveOk?'이 브라우저에 저장됨':'이 브라우저에서는 저장할 수 없습니다(사생활 보호 창 등). 닫기 전에 CSV로 내려받으세요.'}
+
+// week controls
+const wi=$('week');wi.value=cur;
+wi.addEventListener('change',()=>{if(!wi.value)return;cur=monday(new Date(wi.value+'T00:00'));wi.value=cur;render(true)});
+$('thisWeek').onclick=()=>{cur=monday(new Date());wi.value=cur;render(true)};
+$('delWeek').onclick=()=>{if(!wk())return;if(confirm(cur+' 주 기록을 지울까요?')){delete store.weeks[cur];save();render(true)}};
+$('delAll').onclick=()=>{if(confirm('이 브라우저에 저장된 모든 주 기록과 임원판 답을 지울까요?')){store={weeks:{},exec:{done:[],notes:[],date:'',metric:''}};save();render(true);execFill()}};
+$('print').onclick=()=>window.print();
+$('csv').onclick=()=>{
+  const rows=[['주(월요일)','범주','월','화','수','목','금','합계(시간)','비율(%)']];
+  Object.keys(store.weeks).sort().forEach(k=>{const w=store.weeks[k],t=totals(w);if(!t.all)return;CATS.forEach(c=>rows.push([k,c.n,...w[c.k],fmt(t[c.k]),Math.round(t[c.k]/t.all*100)]))});
+  const csv='﻿'+rows.map(r=>r.map(x=>/[",\n]/.test(String(x))?'"'+String(x).replace(/"/g,'""')+'"':x).join(',')).join('\n');
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));a.download='리더-시간-점검표.csv';document.body.appendChild(a);a.click();a.remove();
+};
+
+// exec
+const ex=$('exec');
+ex.innerHTML=QS.map((q,i)=>`<div class="q"><label><input type="checkbox" data-i="${i}"><span>${i+1}. ${q[0]}<small>${q[1]}</small></span></label>`+
+  (i===4?`<div class="grid2"><input type="date" id="exDate" aria-label="다시 볼 날짜"><input type="text" id="exMetric" placeholder="다시 볼 지표" aria-label="다시 볼 지표"></div>`:'')+
+  `<textarea data-n="${i}" aria-label="질문 ${i+1} 답" placeholder="답이나 확인할 사람·자료"></textarea></div>`).join('');
+function execFill(){const e=store.exec;ex.querySelectorAll('[data-i]').forEach(c=>c.checked=!!e.done[+c.dataset.i]);ex.querySelectorAll('[data-n]').forEach(t=>t.value=e.notes[+t.dataset.n]||'');$('exDate').value=e.date||'';$('exMetric').value=e.metric||''}
+ex.addEventListener('input',e=>{const s=store.exec,x=e.target;
+  if(x.dataset.i!=null)s.done[+x.dataset.i]=x.checked;
+  else if(x.dataset.n!=null)s.notes[+x.dataset.n]=x.value;
+  else if(x.id==='exDate')s.date=x.value; else if(x.id==='exMetric')s.metric=x.value;
+  save()});
+execFill();render(true);status();
+})();
+</script>
+</body>
+</html>

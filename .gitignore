@@ -1,0 +1,7 @@
+.omc/
+.omx/
+brag-output*/
+node_modules/
+.shot_*
+*.log
+.DS_Store

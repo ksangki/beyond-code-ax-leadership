@@ -1,13 +1,13 @@
 # 코드 너머 AX 리더십 완성: 에이전트에게 맡기는 나, 팀을 이끄는 팀장, 제도를 정하는 임원
 
-> **초안 판본 (v1.2.1). 저자가 원고 전문을 검토하기 전에 공개한 판본입니다.** 내용은 바뀔 수 있습니다.
+> **초안 판본 (v1.3.0). 저자가 원고 전문을 검토하기 전에 공개한 판본입니다.** 내용은 바뀔 수 있습니다.
 
 에이전트에게 일을 맡기는 실무자, 사람과 에이전트가 섞인 팀을 이끄는 팀장, 그 팀들이 굴러갈 제도를 정하는 임원. AI 없이는 일이 돌지 않는 조직에서 리더가 할 일을 7부 23장으로 나눠, 부마다 같은 문제를 실무자, 팀장, 임원의 자리에서 차례로 다룬다.
 
 ## 읽기
 
 - **웹 버전**: [ksangki.github.io/beyond-code-ax-leadership](https://ksangki.github.io/beyond-code-ax-leadership/)
-- **EPUB**: [v1.2.1 다운로드](epub/코드-너머-AX-리더십-완성-v1.2.1.epub)
+- **EPUB**: [v1.3.0 다운로드](epub/코드-너머-AX-리더십-완성-v1.3.0.epub)
 - **발표자료**: [1시간 발표, 62장](https://ksangki.github.io/beyond-code-ax-leadership/presentation/)
 - **소개 영상**: [100초](media/opening.mp4) (내레이션 음성: Microsoft Edge 읽어 주기 ko-KR-Hyunsu)
 - **발표 영상**: [15분, 발표자료 39장 요약](media/talk.mp4) · [자막](media/talk.vtt) (내레이션 음성: Microsoft Edge 읽어 주기 ko-KR-Hyunsu)
